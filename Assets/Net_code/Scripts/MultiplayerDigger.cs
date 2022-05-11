@@ -72,6 +72,12 @@ namespace Miner.NetCode
 			//Remote player wins
 			if (progress >= GameLogic.finishLine)
 			{
+				//This is the remote player, so he doesn't has a reference to the GameLogic
+				if (gameLogic == null)
+                {
+					gameLogic = FindObjectOfType<GameLogic>();
+                }
+
 				if (gameLogic != null)
                 {
 					gameLogic.GameOver(false);

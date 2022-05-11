@@ -252,8 +252,11 @@ namespace Miner.NetCode
 			PhotonNetwork.CurrentRoom.SetCustomProperties(GetRoomStateHashtable(RoomState.Running));
 
 			// #Critical
-			// Load the Game Level. 
-			PhotonNetwork.LoadLevel(1);
+			// Load the Game Level.
+			if (PhotonNetwork.IsMasterClient)
+			{
+				PhotonNetwork.LoadLevel(1);
+			}
 		}
 
 
